@@ -1,49 +1,29 @@
-F5J Setup v1.5 (X and V) + 3PK templates - EdgeTX 2.12, Radiomaster TX16S MK3
-Made by Jonas Ekman
+F5Jsetup Slider edgeTX v1 (X and V) + 3PK X slider / 3PK V slider templates
+EdgeTX 2.12, Radiomaster TX16S MK3 - Made by Jonas Ekman
+
+Same as F5J Setup v1.4 / 3PK templates, except the motor power:
+- MOTOR ON is still SB down (FM1, motor switch can be changed in the tool).
+- Motor power = right slider RS (bottom = off). Throttle curve CV12 "thr"
+  (3 points, linear) shapes RS -> motor. SG power steps and SH turbo removed.
+- Motor -> elevator compensation: CH1 (V: CH1+CH2) "Motor" line, 5-point curve
+  CV17 "m2e", source = motor output CH6, so it follows RS.
+- Camber -> elevator compensation: CH1 (V: CH1+CH2) "CmbVar" line, 5-point
+  curve CV19 "c2e", source = left slider LS (input I5), active in THERMAL V only.
+- SG keeps Timer 3 (chrono), SC / SI keep the calls. SH is free.
 
 INSTALL
-1. Copy SCRIPTS/ and TEMPLATES/ to the root of the radio SD card (keep the folders).
-2. Radio, SYS > Hardware > Switches:  SF = 2POS,  SH = Toggle (momentary).
-   (radio.yml has a checksum, so this cannot be set from a file.)
-3. New model: Model select > New > Templates > Personal > "3PKtemplate" (X-tail)
-   or "3PKtemplateV" (V-tail). Bind the receiver.
-4. SYS > Tools > "F5J Setup X" (X-tail) or "F5J Setup V" (V-tail).
-   Blank model: Install opens first. The switch page shows which switches control flight modes and functions:
-   tap Accept, or Change switches to pick your own (pilot setup).
-   Then: Install / repair (older models) > Failsafe > Servo direction > Center >
-   Endpoints > Model check > tuning screens.
+1. Copy SCRIPTS/ and TEMPLATES/ to the root of the SD card (keep the folders).
+2. SYS > Hardware > Switches: SF = 2POS. (SH no longer needs to be momentary.)
+3. New model: Templates > Personal > "3PKXslider" (X-tail) or "3PKVslider" (V-tail),
+   or start from a blank model: the tool installs the programming first.
+4. SYS > Tools > "F5Jsetup Slider edgeTX v1 X" or "... V".
+   Order: Install (blank / older model) > Switches > Failsafe > Servo direction >
+   Center > Endpoints > Model check > tuning screens (Motor: throttle curve,
+   motor->elevator; Camber slider: slider->elevator).
+5. ESC calibration (Motor > ESC calibration): the motor follows RS directly.
 
-NEW IN v1.5
-- Install check is stricter: a model counts as programmed only when every mix
-  line has the 3PK source and there are no extra lines. Models with other
-  versions (e.g. the RS slider version) are shown as "Older programming" and
-  converted by Install / repair.
-
-NEW IN v1.4
-- New (blank) model: the tool opens Install first, then the switch page (the
-  flight modes can only light up once the programming is installed), then Failsafe.
-  Models that already have the programming start on the switch page.
-
-NEW IN v1.3
-- Switch assignment: motor switch (and its ON position), 3-pos and 2-pos mode
-  switches, LANDING on the throttle stick or on a switch. Written to L1-L6,
-  L20/L21 and SF1/SF2. SC, SG, SH, SI keep their functions.
-  If the motor switch is changed, also set Model Setup > Pre-start Checks.
-- Camber, snapflap, aileron-rudder (and their partners) have an own value in every
-  flight mode. Tap a flight mode cell and set it - no need to fly in that mode.
-  Older models: inherited values become own values on Install / repair
-  (camber: MOTOR/LANDING from CRUISE, THERMAL V from THERMAL). GV9 (F5J state)
-  stays shared in all flight modes.
-- Low RX voltage call (SF40) is OFF at start; switch it on in F5J timer & calls.
-- Failsafe page (also offered right after Install): checks the safe state
-  (sticks neutral, CRUISE, no LANDING, motor OFF) and captures the channel
-  values. ELRS: EdgeTX failsafe is not used - enter the values (us) in the
-  receiver (WiFi web UI, PWM outputs). Lua cannot write failsafe settings.
-- Pre-start checks in the templates: only the motor switch SB up (OFF) is
-  checked, throttle warning off (the throttle stick is crow, not motor).
-  Model check reports other settings (Lua cannot change them).
-- Fixed: a fresh Install no longer splits GV9 (F5J state) per flight mode.
+A model with the SG/SH programming (3PK template) is shown as "Older programming":
+Install / repair converts it to RS. The F5J Setup v1.4 tools still work for
+models made from 3PKtemplate / 3PKtemplateV.
 
 Not tested on a real radio. Back up models (Model > Copy) before Install.
-
-Also included: GliderSetupX / GliderSetupV v1.2 (general glider tools).
