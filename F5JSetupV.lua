@@ -1,7 +1,7 @@
 -- TNS|F5J Setup V|TNE
 ---------------------------------------------------------------------------
 -- F5J Setup - setup and tuning guide for Jonas' F5J programming "3PK"
--- (3PKtemplate.yml / 3PKtemplateV.yml, EdgeTX 2.12, RadioMaster TX16S MK3)
+-- (electricglidertemplateX.yml / electricglidertemplateV.yml, EdgeTX 2.12, RadioMaster TX16S MK3)
 -- Made by Jonas Ekman
 --
 -- Channels: CH1 Ele  CH2 Rud  CH3 Ail_L  CH4 Ail_R  CH5 armed (ELRS arm)
@@ -13,15 +13,16 @@
 --   CH3 + = left aileron DOWN, CH4 + = right aileron UP, CH7/CH8 + = flap UP
 ---------------------------------------------------------------------------
 
-local VERSION = "1.5"
+local VERSION = "1.7"
 local VARIANT = "V"          -- "X" = elevator + rudder, "V" = V-tail
 local TOOL_TITLE = "F5J Setup V"
 local VT = (VARIANT == "V")
 local DATA_DIR = "/SCRIPTS/TOOLS/F5JSetupData/"
 
--- generated from 3PKtemplateV.yml by gen_profile.py - do not edit by hand
+-- generated from electricglidertemplateV.yml by gen_profile.py - do not edit by hand
 local PROFILE = {
-  model = "3PK template V",
+  slider = true,
+  model = "E-Glider V",
   inputs = {
     { chn = 0, name = "Ail", src = "ail", w = 93, o = 0, ct = 1, cv = 0, trimOff = false, side = 3, fm = 0, sw = "" },
     { chn = 1, name = "Ele", src = "ele", w = 100, o = 0, ct = 1, cv = 0, trimOff = false, side = 3, fm = 0, sw = "" },
@@ -47,17 +48,16 @@ local PROFILE = {
     { ch = 2, name = "CmbSet", src = "max", w = "gv2", o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
     { ch = 2, name = "CmbVar", src = "input5", w = -30, o = 31, mx = 0, sw = "", fm = 479, ct = 0, cv = 0, tr = 1 },
     { ch = 2, name = "SnpFlp", src = "input2", w = "-gv7", o = 0, mx = 0, sw = "", fm = 6, ct = 0, cv = 0, tr = 1 },
-    { ch = 2, name = "MotCmb", src = "ch6", w = 225, o = 2, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
+    { ch = 2, name = "MotCmb", src = "ch6", w = 112, o = 2, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
     { ch = 3, name = "Ailer", src = "input1", w = 100, o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = "gv1", tr = 0 },
     { ch = 3, name = "Brake", src = "input3", w = 40, o = 0, mx = 0, sw = "", fm = 507, ct = 3, cv = 14, tr = 1 },
     { ch = 3, name = "CmbSet", src = "max", w = "gv3", o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
     { ch = 3, name = "CmbVar", src = "input5", w = 23, o = 18, mx = 0, sw = "", fm = 479, ct = 0, cv = 0, tr = 1 },
     { ch = 3, name = "SnpFlp", src = "input2", w = "gv7", o = 0, mx = 0, sw = "", fm = 6, ct = 0, cv = 0, tr = 1 },
-    { ch = 3, name = "MotCmb", src = "ch6", w = -201, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
+    { ch = 3, name = "MotCmb", src = "ch6", w = -101, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
     { ch = 4, name = "ch5", src = "max", w = 100, o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
     { ch = 5, name = "Off", src = "min", w = 95, o = 0, mx = 0, sw = "", fm = 2, ct = 0, cv = 0, tr = 1 },
-    { ch = 5, name = "On", src = "sg", w = 100, o = 0, mx = 2, sw = "", fm = 509, ct = 3, cv = 12, tr = 1 },
-    { ch = 5, name = "Turbo", src = "max", w = 100, o = 0, mx = 2, sw = "SH2", fm = 509, ct = 0, cv = 0, tr = 1 },
+    { ch = 5, name = "On", src = "rs", w = 100, o = 0, mx = 2, sw = "", fm = 509, ct = 3, cv = 12, tr = 1 },
     { ch = 6, name = "Flap", src = "input1", w = 0, o = 0, mx = 0, sw = "", fm = 384, ct = 0, cv = "-gv1", tr = 1 },
     { ch = 6, name = "End", src = "input1", w = 100, o = 0, mx = 1, sw = "", fm = 0, ct = 3, cv = 10, tr = 1 },
     { ch = 6, name = "Offset", src = "max", w = 0, o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
@@ -65,7 +65,7 @@ local PROFILE = {
     { ch = 6, name = "CmbSet", src = "max", w = "gv4", o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
     { ch = 6, name = "CmbVar", src = "input5", w = 13, o = 8, mx = 0, sw = "", fm = 479, ct = 0, cv = 0, tr = 1 },
     { ch = 6, name = "SnpFlp", src = "input2", w = "gv8", o = 0, mx = 0, sw = "", fm = 6, ct = 0, cv = 0, tr = 1 },
-    { ch = 6, name = "MotCmb", src = "ch6", w = -136, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
+    { ch = 6, name = "MotCmb", src = "ch6", w = -68, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
     { ch = 7, name = "Flap", src = "input1", w = 0, o = 0, mx = 0, sw = "", fm = 384, ct = 0, cv = "gv1", tr = 1 },
     { ch = 7, name = "End", src = "input1", w = 100, o = 0, mx = 1, sw = "", fm = 0, ct = 3, cv = 11, tr = 1 },
     { ch = 7, name = "Offset", src = "max", w = 0, o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
@@ -73,7 +73,7 @@ local PROFILE = {
     { ch = 7, name = "CmbSet", src = "max", w = "gv5", o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 1 },
     { ch = 7, name = "CmbVar", src = "input5", w = 14, o = 10, mx = 0, sw = "", fm = 479, ct = 0, cv = 0, tr = 1 },
     { ch = 7, name = "SnpFlp", src = "input2", w = "gv8", o = 0, mx = 0, sw = "", fm = 6, ct = 0, cv = 0, tr = 1 },
-    { ch = 7, name = "MotCmb", src = "ch6", w = -141, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
+    { ch = 7, name = "MotCmb", src = "ch6", w = -71, o = 0, mx = 0, sw = "", fm = 509, ct = 3, cv = 20, tr = 1 },
     { ch = 8, name = "", src = "input5", w = 100, o = 0, mx = 0, sw = "", fm = 0, ct = 0, cv = 0, tr = 0 }
   },
   outputs = {
@@ -106,7 +106,7 @@ local PROFILE = {
     { idx = 8, name = "ch9", t = 1, s = 0, y = {-100, -50, 0, 50, 100}, x = {-100, -50, 0, 50, 100} },
     { idx = 9, name = "fpL", t = 0, s = 0, y = {100, 1, -100} },
     { idx = 10, name = "fpR", t = 0, s = 0, y = {99, 0, -60} },
-    { idx = 11, name = "mot", t = 0, s = 0, y = {42, -10, -40} },
+    { idx = 11, name = "thr", t = 0, s = 0, y = {-100, 0, 100} },
     { idx = 12, name = "baL", t = 0, s = 0, y = {100, 75, 50, 25, 0} },
     { idx = 13, name = "baR", t = 0, s = 0, y = {100, 75, 50, 25, -3} },
     { idx = 14, name = "bfL", t = 0, s = 0, y = {100, 75, 50, 25, 0} },
@@ -114,7 +114,7 @@ local PROFILE = {
     { idx = 16, name = "m2e", t = 1, s = 0, y = {0, 0, 2, 3, 3}, x = {-100, -50, 0, 70, 100} },
     { idx = 17, name = "b2e", t = 1, s = 0, y = {100, 77, 78, -39, -100}, x = {-100, -50, 0, 50, 100} },
     { idx = 18, name = "c2e", t = 0, s = 1, y = {-23, 9, 62, 81, 100} },
-    { idx = 19, name = "m2c", t = 1, s = 0, y = {0, 4, 1, -2, -3}, x = {-100, -50, 0, 70, 100} }
+    { idx = 19, name = "mc2", t = 1, s = 0, y = {0, 8, 2, -4, -6}, x = {-100, -50, 0, 70, 100} }
   },
   fms = {
     { fm = 0, name = "CRUISE", sw = "", fi = 0, fo = 0, tm = { [6] = 0 }, tv = { [6] = 12 } },
@@ -866,6 +866,8 @@ local function writeMixes(log)
     local t = { name = pm.name, source = srcId(pm.src), weight = cap(pm.w, c and c.w),
       offset = cap(pm.o, c and c.o), multiplex = pm.mx, switch = swIdx(pm.sw), flightModes = pm.fm,
       curveType = pm.ct, curveValue = cvOut, carryTrim = (pm.tr == 1) }
+    -- older motor camber scale (curve m2c): kept weight halved, the curve was doubled
+    if inst.mcConv and pm.name == "MotCmb" and used then t.weight = round(t.weight / 2) end
     local before = model.getMixesCount(pm.ch)
     model.insertMix(pm.ch, before, t)
     if model.getMixesCount(pm.ch) ~= before + 1 then failed = failed + 1 end
@@ -882,9 +884,11 @@ local function writeCurves(log)
     local cur = model.getCurve(pc.idx)
     local t = { name = pc.name, type = pc.t, smooth = (pc.s == 1), y = pc.y }
     if pc.t == 1 then t.x = pc.x end
-    if cur and cur.name == pc.name and cur.type == pc.t and cur.points == #pc.y then
+    local conv = (pc.name == "mc2" and cur and cur.name == "m2c")
+    if cur and (cur.name == pc.name or conv) and cur.type == pc.t and cur.points == #pc.y then
       t.y = {}
-      for i = 1, #pc.y do t.y[i] = cur.y[i] end
+      for i = 1, #pc.y do t.y[i] = conv and clamp(cur.y[i] * 2, -100, 100) or cur.y[i] end
+      if conv then inst.mcConv = true end
       if pc.t == 1 and cur.x then t.x = {} for i = 1, #pc.x do t.x[i] = cur.x[i] end end
       t.smooth = cur.smooth
       kept = kept + 1
@@ -1077,6 +1081,7 @@ end
 function install()
   local log = {}
   missing = {}
+  inst.mcConv = false
   local ok, err = pcall(function()
     calOff()
     writeCurves(log)
@@ -2272,6 +2277,32 @@ local function tuneSlider()
   } })
 end
 
+-- motor power -> camber of all four surfaces: one 5-point curve (CV20 m2c),
+-- source = motor output CH6 (= RS through the throttle curve), MOTOR ON only
+local function motorCamberItem()
+  local function te(ch, y)
+    local _, m = findMix(ch, "MotCmb")
+    if not m or gvOfNum(m.weight) then return 0 end
+    local v = m.weight * y / 100
+    if POS_WORD[ch] ~= "DOWN" then v = -v end     -- + = trailing edge DOWN
+    return round(v)
+  end
+  local c = model.getCurve(19)
+  local names = {}
+  if c then
+    for i = 1, c.points do
+      local x = (c.type == 1 and c.x) and c.x[i] or round(-100 + 200 * (i - 1) / (c.points - 1))
+      names[i] = "motor " .. round((x + 100) / 2) .. "%"
+    end
+  end
+  return curveItem(19, P.slider and "Motor (RS) -> camber, all surfaces (mc2)" or "Motor -> camber, all surfaces (mc2)",
+    "5 points over the motor power (MOTOR ON only). 1 step = about 1 % on the ailerons. Shown: camber in % (+ = trailing edge down) on ail L/R and flap L/R.",
+    { title = "Motor", ptNames = names, live = function() return chValue(MOT) end,
+      yfmt = function(y)
+        return string.format("A %d/%d F %d/%d", te(AIL_L, y), te(AIL_R, y), te(FLP_L, y), te(FLP_R, y))
+      end })
+end
+
 local function tuneMotor()
   openList({ title = "Motor", intro = "Motor ON = " .. motorText() .. " (FM1). " ..
     (P.slider and "Power = right slider RS (bottom = off)." or "Power by SG position, hold SH = full power (Turbo)."), items = {
@@ -2287,11 +2318,11 @@ local function tuneMotor()
       open = function() push("edit", bothSpec("Motor", "weight", "Motor -> elevator", "Elevator with motor power on both ruddervators, curve m2e.", -100, 100)) end }
     or mixItem(ELE, "Motor", "weight", "Motor -> elevator (CH1)", "Elevator with motor power, shaped by curve m2e.", -100, 100, { title = "Motor" }),
     curveItem(16, "Motor -> elevator curve (m2e)", "Motor output -> elevator compensation.", { title = "Motor" }),
-    mixItem(AIL_L, "MotCmb", "weight", "Motor -> aileron L (CH3)", "Camber with motor power, curve m2c.", -250, 250, { title = "Motor" }),
-    mixItem(AIL_R, "MotCmb", "weight", "Motor -> aileron R (CH4)", "Camber with motor power, curve m2c.", -250, 250, { title = "Motor" }),
-    mixItem(FLP_L, "MotCmb", "weight", "Motor -> flap L (CH7)", "Camber with motor power, curve m2c.", -250, 250, { title = "Motor" }),
-    mixItem(FLP_R, "MotCmb", "weight", "Motor -> flap R (CH8)", "Camber with motor power, curve m2c.", -250, 250, { title = "Motor" }),
-    curveItem(19, "Motor -> camber curve (m2c)", "Motor output -> camber of ailerons and flaps.", { title = "Motor" }),
+    motorCamberItem(),
+    mixItem(AIL_L, "MotCmb", "weight", "Motor -> aileron L (CH3)", "Camber with motor power, curve mc2.", -250, 250, { title = "Motor" }),
+    mixItem(AIL_R, "MotCmb", "weight", "Motor -> aileron R (CH4)", "Camber with motor power, curve mc2.", -250, 250, { title = "Motor" }),
+    mixItem(FLP_L, "MotCmb", "weight", "Motor -> flap L (CH7)", "Camber with motor power, curve mc2.", -250, 250, { title = "Motor" }),
+    mixItem(FLP_R, "MotCmb", "weight", "Motor -> flap R (CH8)", "Camber with motor power, curve mc2.", -250, 250, { title = "Motor" }),
     { label = "ESC calibration", value = function() return "open" end, open = function() push("esc") end },
   } })
 end
@@ -2423,7 +2454,7 @@ screens.f5j = {
 ---------------------------------------------------------------------------
 local escStage = 0
 screens.esc = {
-  enter = function() escStage = 0 motorLock() end,
+  enter = function() escStage = 0 screens.esc.armed = false motorLock() end,
   run = function(event)
     buttons = {}
     header("ESC calibration", "CH6")
@@ -2436,8 +2467,21 @@ screens.esc = {
     elseif escStage == 1 then
       local full
       if P.slider then
+        local rsv = getValue(fid("rs") or 0) or 0
+        if rsv < -1000 then screens.esc.armed = true end
+        if not screens.esc.armed then
+          motorLock()
+          text(8, BAR_H + 10, "Throttle output: OFF", MIDSIZE, C.ok)
+          wrap(8, BAR_H + 44, W - 16, "Move RS to the bottom first. The motor then follows RS.", 0, C.warn, 20)
+          bottomRow({ { "Abort (motor off)", function() motorLock() back() end, "warn" } })
+          drawButtons()
+          if event == EV.EXIT then motorLock() back() return end
+          focusNav(event)
+          handleButtons(event)
+          return
+        end
         calSet({ [MOT] = { { w = 100, src = "rs" } } })
-        full = (getValue(fid("rs") or 0) or 0) > 1000
+        full = rsv > 1000
         text(8, BAR_H + 10, string.format("Throttle output: %d%%", round((getValue(fid("rs") or 0) or 0) * 100 / 1024)), MIDSIZE,
           full and C.warn or C.ok)
         wrap(8, BAR_H + 44, W - 16, "The motor follows RS directly.  1. RS to the top = full throttle.  2. Connect the battery, wait for the full-throttle beeps.  3. RS to the bottom = off, wait for the confirmation beeps.  Then Next.", 0, C.txt, 20)

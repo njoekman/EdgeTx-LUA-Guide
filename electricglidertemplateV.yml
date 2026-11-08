@@ -1,7 +1,7 @@
 semver: 2.10.5
 header: 
-   name: "3PK template"
-   bitmap: "Glider-X.png"
+   name: "E-Glider V"
+   bitmap: "Glider-V.png"
    labels: ""
 timers: 
    0:
@@ -59,7 +59,7 @@ customThrottleWarningPosition: 0
 beepANACenter: 0
 mixData: 
  -
-   weight: 100
+   weight: 50
    destCh: 0
    srcRaw: I1
    carryTrim: 0
@@ -74,6 +74,38 @@ mixData:
    speedUp: 0
    speedDown: 0
    name: "Elev"
+ -
+   weight: -50
+   destCh: 0
+   srcRaw: I3
+   carryTrim: 0
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 000000000
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "Rudder"
+ -
+   weight: -GV6
+   destCh: 0
+   srcRaw: I0
+   carryTrim: 1
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 000000000
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "Ai2Ru"
  -
    weight: 10
    destCh: 0
@@ -132,7 +164,23 @@ mixData:
    speedDown: 0
    name: "CmbVar"
  -
-   weight: 100
+   weight: 50
+   destCh: 1
+   srcRaw: I1
+   carryTrim: 0
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 000000000
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "Elev"
+ -
+   weight: 50
    destCh: 1
    srcRaw: I3
    carryTrim: 0
@@ -163,6 +211,63 @@ mixData:
    speedUp: 0
    speedDown: 0
    name: "Ai2Ru"
+ -
+   weight: 10
+   destCh: 1
+   srcRaw: ch(5)
+   carryTrim: 1
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 101111111
+   curve: 
+      type: 3
+      value: 17
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "Motor"
+ -
+   weight: 16
+   destCh: 1
+   srcRaw: I2
+   carryTrim: 1
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 110111111
+   curve: 
+      type: 3
+      value: 18
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "Brake"
+ -
+   weight: -10
+   destCh: 1
+   srcRaw: I4
+   carryTrim: 1
+   mixWarn: 0
+   mltpx: ADD
+   speedPrec: 0
+   offset: 0
+   swtch: "NONE"
+   flightModes: 111110111
+   curve: 
+      type: 3
+      value: 19
+   delayUp: 0
+   delayDown: 0
+   speedUp: 0
+   speedDown: 0
+   name: "CmbVar"
  -
    weight: 108
    destCh: 2
@@ -250,7 +355,7 @@ mixData:
    speedDown: 0
    name: "SnpFlp"
  -
-   weight: 225
+   weight: 112
    destCh: 2
    srcRaw: ch(5)
    carryTrim: 1
@@ -355,7 +460,7 @@ mixData:
    speedDown: 0
    name: "SnpFlp"
  -
-   weight: -201
+   weight: -101
    destCh: 3
    srcRaw: ch(5)
    carryTrim: 1
@@ -408,7 +513,7 @@ mixData:
  -
    weight: 100
    destCh: 5
-   srcRaw: SG
+   srcRaw: SL2
    carryTrim: 1
    mixWarn: 0
    mltpx: REPL
@@ -424,22 +529,6 @@ mixData:
    speedUp: 0
    speedDown: 0
    name: "On"
- -
-   weight: 100
-   destCh: 5
-   srcRaw: MAX
-   carryTrim: 1
-   mixWarn: 0
-   mltpx: REPL
-   speedPrec: 0
-   offset: 0
-   swtch: "SH2"
-   flightModes: 101111111
-   delayUp: 0
-   delayDown: 0
-   speedUp: 0
-   speedDown: 0
-   name: "Turbo"
  -
    weight: 0
    destCh: 6
@@ -562,7 +651,7 @@ mixData:
    speedDown: 0
    name: "SnpFlp"
  -
-   weight: -136
+   weight: -68
    destCh: 6
    srcRaw: ch(5)
    carryTrim: 1
@@ -702,7 +791,7 @@ mixData:
    speedDown: 0
    name: "SnpFlp"
  -
-   weight: -141
+   weight: -71
    destCh: 7
    srcRaw: ch(5)
    carryTrim: 1
@@ -738,23 +827,23 @@ mixData:
    name: ""
 limitData: 
    0:
-      min: 324
+      min: 0
       max: 0
       ppmCenter: 0
-      offset: 0
+      offset: -95
       symetrical: 0
       revert: 1
       curve: 1
-      name: "Ele"
+      name: "Vt_L"
    1:
-      min: 53
-      max: -462
+      min: 301
+      max: 0
       ppmCenter: 0
-      offset: -161
+      offset: 101
       symetrical: 0
-      revert: 1
+      revert: 0
       curve: 2
-      name: "Rud"
+      name: "Vt_R"
    2:
       min: 357
       max: -566
@@ -1012,7 +1101,7 @@ curves:
       type: 0
       smooth: 0
       points: -2
-      name: "mot"
+      name: "thr"
    12:
       type: 0
       smooth: 0
@@ -1052,7 +1141,7 @@ curves:
       type: 1
       smooth: 0
       points: 0
-      name: "m2c"
+      name: "mc2"
 points: 
    0:
       val: -100
@@ -1173,11 +1262,9 @@ points:
    77:
       val: -60
    78:
-      val: 42
-   79:
-      val: -10
+      val: -100
    80:
-      val: -40
+      val: 100
    81:
       val: 100
    82:
@@ -1247,13 +1334,13 @@ points:
    121:
       val: 100
    123:
-      val: 4
+      val: 8
    124:
-      val: 1
+      val: 2
    125:
-      val: -2
+      val: -4
    126:
-      val: -3
+      val: -6
    127:
       val: -50
    129:
